@@ -1,6 +1,6 @@
+import os
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
 from data_extract import playsound
-from threading import Thread
-from os.path import exists
 
 loc = "data1.wav"
 
@@ -12,20 +12,25 @@ data1 = open(loc, "wb")
 data1.write(data)
 data1.close()
 
-dataThread = Thread(target = playsound, args = [loc])
-dataThread.start()
+playsound(loc)
 
-while True:
-    if not exists(loc):
-        data1 = open(loc, "wb")
-        data1.write(data)
-        data1.close()
+# from threading import Thread
 
-        dataThread = Thread(target = playsound, args = [loc])
-        dataThread.start()
+# dataThread = Thread(target = playsound, args = [loc])
+# dataThread.start()
+
+# while True:
+#     if not exists(loc):
+#         data1 = open(loc, "wb")
+#         data1.write(data)
+#         data1.close()
+
+#         dataThread = Thread(target = playsound, args = [loc])
+#         dataThread.start()
 
 # https://development-tools.net/python-obfuscator/
 
 # Windows - https://github.com/AndreMiras/pycaw
 # Above from https://stackoverflow.com/questions/20828752/python-change-master-application-volume
 # Mac - https://stackoverflow.com/questions/2565204/adjust-osx-system-audio-volume-in-python
+# Linux - https://stackoverflow.com/questions/8220108/how-do-i-check-the-operating-system-in-python

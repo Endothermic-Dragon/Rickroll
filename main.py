@@ -1,2 +1,5 @@
+import os
 import subprocess
-subprocess.call('pyw threaded_run.pyw')
+
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
+subprocess.call("pyw threaded_run.pyw")
