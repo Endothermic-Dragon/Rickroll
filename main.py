@@ -1,7 +1,12 @@
+# Final resolution - just schedule two tasks in task scheduler instead of one
+
 import os
-import subprocess
+from multiprocessing import Pool
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
-subprocess.call("pyw music.pyw")
-subprocess.call("pyw volume.pyw")
+def run_process(process):
+    os.system(f'pyw {process}')
+
+if __name__ == '__main__':
+    Pool(processes=2).map(run_process, ["music.py", "volume.py"])
